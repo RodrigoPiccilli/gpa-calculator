@@ -8,25 +8,27 @@ public class Course {
     private String name;
     /** Course Title */
     private String title;
-    /** Course ID */
-    private int courseID;
+    /** Course Section */
+    private int section;
     /** Course Instructor */
     private String instructor;
+    /** Course Grade */
+    private int grade;
 
     /**
      * Constructor for Course.
      * @param name Course Name
      * @param title Course Title
-     * @param courseID Course ID
+     * @param section Course Section
      * @param instructor Course Instructor
      */
-    public Course(String name, String title, int courseID, String instructor) {
+    public Course(String name, String title, int section, String instructor, int grade) {
         setName(name);
         setTitle(title);
-        setID(courseID);
+        setSection(section);
         setInstructor(instructor);
+        setGrade(grade);
     }
-
 
     /**
      * Setter for Name.
@@ -49,13 +51,13 @@ public class Course {
     }
 
     /**
-     * Setter for Course ID.
-     * @param courseID Course ID
-     * @throws IllegalArgumentException if ID is less than or equal to 0.
+     * Setter for Course Section.
+     * @param section Course Section
+     * @throws IllegalArgumentException if Section is less than or equal to 0 or greater than 999.
      */
-    private void setID(int courseID) {
-        if(courseID <= 0) throw new IllegalArgumentException("Invalid ID for Course");
-        this.courseID = courseID;
+    private void setSection(int section) {
+        if(section <= 0 || section > 999) throw new IllegalArgumentException("Invalid ID for Course");
+        this.section = section;
     }
 
     /**
@@ -66,6 +68,15 @@ public class Course {
     private void setInstructor(String instructor) {
         if(instructor == null || instructor.isEmpty()) throw new IllegalArgumentException("Invalid Instructor for Course");
         this.instructor = instructor;
+    }
+
+    /**
+     * Setter for Grade.
+     * @param grade Student's Grade
+     */
+      public void setGrade(int grade) {
+        if(grade < 0) throw new IllegalArgumentException("Invalid Grade");
+        this.grade = grade;
     }
 
 }

@@ -1,5 +1,9 @@
 package student;
 
+import java.util.ArrayList;
+
+import course.Course;
+
 /**
  * Class representing student object. Each student has their own gpa, name, and student ID number.
  * 
@@ -7,41 +11,78 @@ package student;
  */
 public class Student {
 
-    /** Student Name */
-    private String name;
+    /** Student First Name */
+    private String firstName;
+    /** Student Last Name */
+    private String lastName;
     /** Student ID */
     private int studentID;
     /** Student GPA */
     private double gpa;
-    
+    /** Student Grades */
+    private ArrayList<Course> courses;
+
+
     /**
      * Constructor For Student Object.
-     * @param name  Student Name
+     * @param firstName  Student First Name
+     * @param lastName Student Last Name
+     * @param studentID Student ID
+     */
+    public Student(String firstName, String lastName, int studentID) {
+        this(firstName, lastName, studentID, 0.0);
+       
+    }
+
+    /**
+     * Constructor For Student Object.
+     * @param firstName  Student First Name
+     * @param lastName Student Last Name
      * @param studentID Student ID
      * @param gpa   Student GPA
      */
-    public Student(String name, int studentID, double gpa) {
-        setName(name);
+    public Student(String firstName, String lastName, int studentID, double gpa) {
+        setFirstName(firstName);
+        setLastName(lastName);
         setStudentID(studentID);
         setGPA(gpa);
+        courses = new ArrayList<>();
     }
 
     /**
-     * Getter for Name
-     * @return Student Name
+     * Getter for First Name
+     * @return Student First Name
      */
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
     /**
-     * Setter for Name
-     * @param name Student Name
+     * Getter for Last Name
+     * @return Student Last Name
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * Setter for First Name
+     * @param firstName Student First Name
      * @throws IllegalArgumentException if student name is null or empty.
      */
-    private void setName(String name) {
-        if(name == null || name.isEmpty()) throw new IllegalArgumentException("Invalid Student Name");
-        this.name = name;
+    private void setFirstName(String firstName) {
+        if(firstName == null || firstName.isEmpty()) throw new IllegalArgumentException("Invalid Student Name");
+        this.firstName = firstName;
+    }
+
+     /**
+     * Setter for First Name
+     * @param lastName Student First Name
+     * @throws IllegalArgumentException if student name is null or empty.
+     */
+    private void setLastName(String lastName) {
+        if(lastName == null || lastName.isEmpty()) throw new IllegalArgumentException("Invalid Student Name");
+        this.lastName = lastName;
     }
 
     /**
@@ -79,6 +120,10 @@ public class Student {
     public void setGPA(double gpa) {
         if(gpa < 0) throw new IllegalArgumentException("Invalid Student GPA");
         this.gpa = gpa;
+    }
+
+    public ArrayList<Course> getCourses() {
+        return courses;
     }
 
 
